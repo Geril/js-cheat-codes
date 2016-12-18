@@ -27,20 +27,27 @@ const jsCheat = (function () {
 
     const addDebugWindow = () => {
         const debugWindow = document.createElement('div');
+        debugWindow.id = 'js-cheat-debug-window';
         const debugWindowStyles = {
             position: 'absolute',
             right: '20px',
             bottom: '20px',
-            height: '150px',
-            width: '150px',
-            background: 'red',
+            background: 'rgba(165, 165, 165, 0.5)',
             borderRadius: '5px',
+            padding: '20px',
         }
+        debugWindow.innerText = 'Waiting for the user\'s first input';
+
         Object.assign(debugWindow.style, debugWindowStyles);
         if (document.body !== null) {
             document.body.appendChild(debugWindow);
         }
 
+    };
+
+    const rerenderDebugWindow = (currentKey, userInputArray, secretCode) => {
+        const debugWindow = document.getElementById('js-cheat-debug-window');
+        debugWindow.innerHTML = `Secretcode: ${secretCode}<br />Last key: ${currentKey}<br />Keys chain: ${userInputArray}`;
     };
 
     const compareArrays = (arrayOne, arrayTwo) => {
@@ -92,6 +99,11 @@ const jsCheat = (function () {
         window.addEventListener('keyup', (event) => {
             userInputArray.push(event.key);
             userInputArray = userInputArray.slice(-codeLength);
+
+            if (options.debug) {
+                rerenderDebugWindow(event.key, userInputArray, options.code);
+            }
+
             if (Array.isArray(options.code) && compareArrays(userInputArray, options.code) || compareStringAgainstCode(userInputArray.join(''), options.code)) {
                 options.callback();
             }
