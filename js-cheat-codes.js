@@ -46,8 +46,9 @@ const jsCheat = (function () {
     };
 
     const rerenderDebugWindow = (currentKey, userInputArray, secretCode) => {
+        const userInputString = userInputArray.join('');
         const debugWindow = document.getElementById('js-cheat-debug-window');
-        debugWindow.innerHTML = `Secretcode: ${secretCode}<br />Last key: ${currentKey}<br />Keys chain: ${userInputArray}`;
+        debugWindow.innerHTML = `<strong>Secret Code:</strong> ${secretCode}<br /><strong>Last key:</strong> ${currentKey}<br /><strong>Keys chain:</strong> ${userInputString}`;
     };
 
     const compareArrays = (arrayOne, arrayTwo) => {
