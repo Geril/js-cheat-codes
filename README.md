@@ -1,6 +1,8 @@
 # Website Cheat Code Script
 Simple small script written in JavaScript that allows you to use cheat code or "Konami Code" on your website.
 
+[Demo](https://geril.github.io/js-cheat-codes/demo/)
+
 ## How to use
 **1. Include library to your website**
 
