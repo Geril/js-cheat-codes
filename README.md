@@ -8,7 +8,7 @@ Simple small script written in JavaScript that allows you to use cheat code or "
 
 To start using this library you need to include script on your website using script tag.
 ```
-<script src="./js-cheat-codes.js"></script>
+<script src="./js-cheat-codes.min.js"></script>
 ```
 **2. Initialize library**
 
